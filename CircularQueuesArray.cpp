@@ -47,7 +47,12 @@ class Queues{
         // cek jika antrian hanya memiliki satu elemen
         if(FRONT == max -1)
             FRONT = 0;
-        else
+        else{
             FRONT = FRONT + 1;
+        }
+    }
+
+    void Display(){
+        
     }
 };
