@@ -59,6 +59,17 @@ class Queues{
         //cek apakah antrian kosong
         if (FRONT == -1){
             cout << "Queue is empty\n";
+            return;
+        }
+        cout << "\nElements in the queue are...\n";
+
+        //jika FRONT_Position <= REAR_position, iterasi dari front hingga rear
+        if(FRONT_position <= REAR_position){
+            while(FRONT_position <= REAR_position){
+                cout << queue_array[FRONT_position] << "  ";
+                FRONT_position++;
+            }
+            cout << endl;
         }
     }
 };
