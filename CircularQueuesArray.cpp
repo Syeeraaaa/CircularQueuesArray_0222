@@ -1,21 +1,69 @@
+/**
+ * @mainpage Documentation circular Queues
+ * 
+ * @section Introduction
+ * project ini merupakan project struktur data 
+ * menggunakan struktur data queues dengan pendekatan circular arrays.
+ * 
+ * @section Operations
+ * - en queue for insert element into queues
+ * - de queue for delete elements from queues
+ * - show data / display
+ * 
+ * @section How to use
+ * 1. Insert
+ * 2. Delete
+ * 3. Display
+ * 4. Exit
+ * 
+ * @author yProfile
+ * - Nama  : Syeera Silvia Erby
+ * - NIM   : 20240140222
+ * - Kelas : E
+ * 
+ * @brief 
+ * @version 0.1
+ * @date 2025-06-23
+ * 
+ * @copyright Gibran@umy.ac.id (c) 2025
+ * 
+ */
 #include <iostream>
 using namespace std;
-
+ 
+/**
+ * @class Queue 
+ * @brief This class is for operation queues
+ * 
+ */
 class Queues
 {
 private:
-    int FRONT, REAR, max = 5;
-    int queue_array[5];
+    static const int max = 5;
+    int FRONT; /// private variable front untuk menunjuk ke elemen pertama
+    int REAR; /// private variable reare untuk menunjuk ke elemen terakhir
+    int max = 5; /// private max untuk kapasitas dari element 
+    int queue_array [5]; /// private variable queue_array digunakan untuk menyimpan elemen
 
 public:
-    Queues()
+/**
+ * @brief Construct a new Queues object
+ * set default queues null
+ * whit front = -1 and rear = -1
+ */
+    Queues() 
     {
         FRONT = -1;
         REAR = -1;
     }
+
+    /**
+     * @brief method untuk memasukkan data ke queue
+     * 
+     */
     void insert()
     {
-        int num;
+        int num; /// variable num untuk menyimpan input angka yang di masukkan kedalam queue
         cout << "Enter a number: ";
         cin >> num;
         cout << endl;
@@ -43,6 +91,10 @@ public:
         }
         queue_array[REAR] = num;
     }
+    /**
+     * @brief method untuk memastikan antrian tidak kosong sebelum menghapus
+     * 
+     */
     void remove()
     {
         // cek apakah antrian kosong
@@ -61,11 +113,14 @@ public:
             FRONT = FRONT + 1;
         }
     }
-
+    /**
+     * @brief method untuk menampilkan semua elemen 
+     * 
+     */
     void Display()
     {
-        int FRONT_position = FRONT;
-        int REAR_position = REAR;
+        int FRONT_position = FRONT; /// variable FRONT_position memiliki fungsi sebagai penunjuk posisi bantu, agar tidak mengganggu variable utama.
+        int REAR_position = REAR; /// variable REAR_position memiliki fungsi sebagai penunjuk posisi bantu, agar tidak mengganggu variable utama.
 
         // cek apakah antrian kosong
         if (FRONT == -1)
@@ -107,10 +162,16 @@ public:
     }
 };
 
+/**
+ * @brief method int main untuk memanggil semua fungsi agar bisa di jalankan
+ *
+ * 
+ * @return int 
+ */
 int main()
 {
-    Queues q;
-    char ch;
+    Queues q; /// mendeklarasikkan objek q dari queues
+    char ch; /// mendeklarasikkan objek ch dari char
 
     while (true)
     {
@@ -146,7 +207,20 @@ int main()
             {
                 return 0;
             }
+            default:
+            {
+                cout<< "Invalid option!!" << endl;
+                break;
             }
+            }
+        }
+        catch(exception &e)
+        {
+            cout << "Check for the values entered." << endl;
         }
     }
 }
+// fungsi rear untuk menambah data
+// fungsi front nilai utama atau index pertama
+// ketika rear sudah berada pada ujung idex di sebut circular 
+// front + 1 untuk menghapus
